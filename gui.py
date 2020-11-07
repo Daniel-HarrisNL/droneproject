@@ -24,26 +24,29 @@ degree_label.grid(row=0, column=2)
 degree_entry.grid(row=1, column=2, sticky="n")
 
 # Create update buttons for the entry values of cm and degree (2 separate ones to look cleaner next to entries)
-update1 = tk.Button(
+update_cm = tk.Button(
     text="✓",
     width=1,
     height=1,
 )
 
-update2 = tk.Button(
+update_degree = tk.Button(
     text="✓",
     width=1,
     height=1,
 )
-update1.grid(row=0, column=0, sticky="e")
-update2.grid(row=0, column=2, sticky="e")
+update_cm.grid(row=0, column=0, sticky="e")
+update_degree.grid(row=0, column=2, sticky="e")
 
 
 # Define the function to get the entry values when clicking the update button
 # if cm is out of range, if statements are setup to push it back into the range
-def entry(event):
+def entry_cm(event):
     cm = cm_entry.get()
-    degree = degree_entry.get()
+    if not cm.isnumeric():
+        cm = 20
+        cm_entry.delete(0, tk.END)
+        cm_entry.insert(0, cm)
     cm = float(cm)
     if cm < 20:
         cm = 20
@@ -53,6 +56,15 @@ def entry(event):
         cm = 500
         cm_entry.delete(0, tk.END)
         cm_entry.insert(0, cm)
+    print(cm)
+
+
+def entry_degree(event):
+    degree = degree_entry.get()
+    if not degree.isnumeric():
+        degree = 90
+        degree_entry.delete(0, tk.END)
+        degree_entry.insert(0, degree)
     degree = float(degree)
     if degree < 1:
         degree = 1
@@ -62,14 +74,12 @@ def entry(event):
         degree = 360
         degree_entry.delete(0, tk.END)
         degree_entry.insert(0, degree)
-
-    print(cm)
     print(degree)
 
 
 # set button Presses for both entries
-update1.bind("<Button-1>", entry)
-update2.bind("<Button-1>", entry)
+update_cm.bind("<Button-1>", entry_cm)
+update_degree.bind("<Button-1>", entry_degree)
 
 """ Start of Engine related """
 # Create a take off button
