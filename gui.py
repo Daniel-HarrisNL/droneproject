@@ -1,3 +1,5 @@
+# Use "pip install python-tk" if tkinter is not installed
+
 # Import tkinter module for creating gui
 import tkinter as tk
 
@@ -14,9 +16,13 @@ window.rowconfigure([0, 1, 2, 3, 4, 5, 6, 7], minsize=50)
 # creating entry widgets and headers for cm and degrees
 cm_label = tk.Label(text="Centimetres (20 - 500)")
 cm_entry = tk.Entry()
+cm = 20
+cm_entry.insert(0, 20)  # Set default entry for cm
 
 degree_label = tk.Label(text="Degrees (1 - 360)")
 degree_entry = tk.Entry()
+degree = 45
+degree_entry.insert(0, 45)  # Set default entry for degree
 
 cm_label.grid(row=0, column=0, sticky="w")
 cm_entry.grid(row=1, column=0, sticky="n")
@@ -27,13 +33,13 @@ degree_entry.grid(row=1, column=2, sticky="n")
 update_cm = tk.Button(
     text="✓",
     width=1,
-    height=1,
+    height=1
 )
 
 update_degree = tk.Button(
     text="✓",
     width=1,
-    height=1,
+    height=1
 )
 update_cm.grid(row=0, column=0, sticky="e")
 update_degree.grid(row=0, column=2, sticky="e")
@@ -42,6 +48,7 @@ update_degree.grid(row=0, column=2, sticky="e")
 # Define the function to get the entry values when clicking the update button
 # if cm is out of range, if statements are setup to push it back into the range
 def entry_cm(event):
+    global cm  # Set it to actually interact with our created "cm" variable
     cm = cm_entry.get()
     if not cm.isnumeric():
         cm = 20
@@ -60,6 +67,7 @@ def entry_cm(event):
 
 
 def entry_degree(event):
+    global degree  # Set it to actually interact with our created "degree" variable
     degree = degree_entry.get()
     if not degree.isnumeric():
         degree = 90
@@ -145,7 +153,7 @@ button_rotate_cw.grid(row=3, column=4, sticky="nesw", padx=2, pady=2)
 
 
 def rotate_cw(event):
-    print("Rotate clockwise")
+    print("Rotate clockwise {} degrees".format(degree))
 
 
 button_rotate_cw.bind("<Button-1>", rotate_cw)
@@ -159,7 +167,7 @@ button_rotate_ccw.grid(row=3, column=2, sticky="nesw", padx=2, pady=2)
 
 
 def rotate_ccw(event):
-    print("Rotate counter-clockwise")
+    print("Rotate counter-clockwise {} degrees".format(degree))
 
 
 button_rotate_ccw.bind("<Button-1>", rotate_ccw)
@@ -174,7 +182,7 @@ button_forward.grid(row=4, column=3, sticky="nesw", padx=2, pady=2)
 
 
 def forward(event):
-    print("move forward")
+    print("move forward {}cm".format(cm))
 
 
 button_forward.bind("<Button-1>", forward)
@@ -188,7 +196,7 @@ button_back.grid(row=5, column=3, sticky="nesw", padx=2, pady=2)
 
 
 def back(event):
-    print("move backward")
+    print("move backward {}cm".format(cm))
 
 
 button_back.bind("<Button-1>", back)
@@ -202,7 +210,7 @@ button_up.grid(row=3, column=3, sticky="nesw", padx=2, pady=2)
 
 
 def up(event):
-    print("move up")
+    print("move up {}cm".format(cm))
 
 
 button_up.bind("<Button-1>", up)
@@ -216,7 +224,7 @@ button_left.grid(row=4, column=2, sticky="nesw", padx=2, pady=2)
 
 
 def left(event):
-    print("move left")
+    print("move left {}cm".format(cm))
 
 
 button_left.bind("<Button-1>", left)
@@ -230,7 +238,7 @@ button_right.grid(row=4, column=4, sticky="nesw", padx=2, pady=2)
 
 
 def right(event):
-    print("move right")
+    print("move right {}cm".format(cm))
 
 
 button_right.bind("<Button-1>", right)
@@ -244,7 +252,7 @@ button_down.grid(row=6, column=3, sticky="nesw", padx=2, pady=2)
 
 
 def down(event):
-    print("move down")
+    print("move down {}cm".format(cm))
 
 
 button_down.bind("<Button-1>", down)
