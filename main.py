@@ -23,6 +23,6 @@ t = ta.Tello()
 # Program start
 if __name__ == "__main__":
     print("Program starts here")
-    t.connect_and_initialize()
+    # t.connect_and_initialize()
     import gui
     t.disconnect()
