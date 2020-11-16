@@ -175,7 +175,8 @@ cut_engine.bind("<Button-1>", button_cut_engine)
 # Create rotational buttons
 
 button_rotate_cw = tk.Button(
-    text="⟳",
+    text="CW",
+    #⟳
     width=3,
     height=2
 )
@@ -190,7 +191,8 @@ def rotate_cw(event):
 button_rotate_cw.bind("<Button-1>", rotate_cw)
 
 button_rotate_ccw = tk.Button(
-    text="⟲",
+    text="CCW",
+    #⟲
     width=3,
     height=2
 )
@@ -206,7 +208,8 @@ button_rotate_ccw.bind("<Button-1>", rotate_ccw)
 
 # Create directional buttons
 button_forward = tk.Button(
-    text="⮉",
+    text="F",
+    #⮉
     width=3,
     height=2,
 )
@@ -221,7 +224,8 @@ def forward(event):
 button_forward.bind("<Button-1>", forward)
 
 button_back = tk.Button(
-    text="⮋",
+    text="B",
+    #⮋
     width=3,
     height=2,
 )
@@ -236,7 +240,8 @@ def back(event):
 button_back.bind("<Button-1>", back)
 
 button_up = tk.Button(
-    text="🢁",
+    text="U",
+    #🢁
     width=3,
     height=2,
 )
@@ -251,7 +256,8 @@ def up(event):
 button_up.bind("<Button-1>", up)
 
 button_left = tk.Button(
-    text="🢀",
+    text="L",
+    #🢀
     width=3,
     height=2,
 )
@@ -266,7 +272,8 @@ def left(event):
 button_left.bind("<Button-1>", left)
 
 button_right = tk.Button(
-    text="🢂",
+    text="R",
+    #🢂
     width=3,
     height=2,
 )
@@ -281,7 +288,8 @@ def right(event):
 button_right.bind("<Button-1>", right)
 
 button_down = tk.Button(
-    text="🢃",
+    text="D",
+    #🢃,
     width=3,
     height=2,
 )
