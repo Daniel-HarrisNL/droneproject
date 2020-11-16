@@ -77,7 +77,7 @@ update_degree.grid(row=0, column=2, sticky="e")
 def entry_cm(event):
     global cm  # Set it to actually interact with our created "cm" variable
     cm = cm_entry.get()
-    if not cm.isnumeric():
+    if not str(cm).isnumeric():
         cm = 20
         cm_entry.delete(0, tk.END)
         cm_entry.insert(0, cm)
@@ -96,7 +96,7 @@ def entry_cm(event):
 def entry_degree(event):
     global degree  # Set it to actually interact with our created "degree" variable
     degree = degree_entry.get()
-    if not degree.isnumeric():
+    if not str(degree).isnumeric():
         degree = 90
         degree_entry.delete(0, tk.END)
         degree_entry.insert(0, degree)
