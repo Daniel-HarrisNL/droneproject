@@ -9,29 +9,16 @@ Authors: Blake Legge, Lyndon Loveys, Nicholas Hodder, Annette Clarke, Daniel Har
 # Import tkinter module for creating gui
 import tkinter as tk
 
-# Import Roy's Tello abridged module
-import tello_abridged as ta
-
 # Import Tello module
-import tello as tell
+import tello as ta
 
 # Create handles for the Tello class in both tello.py and tello_abridged.py files
 t = ta.Tello()
-tel = tell.Tello()
-
-# Functions
-'''
-DEFAULT_TELLO_COMMAND_IP - A constant representing the default IP address for commands on Tello per the documentation.
-'''
-DEFAULT_TELLO_COMMAND_IP = "192.168.10.1"
-
-'''
-DEFAULT_TELLO_COMMAND_PORT - A constant representing the default port for commands on Tello per the documentation.
-'''
-DEFAULT_TELLO_COMMAND_PORT = 8889
 
 # creating the actual window
 window = tk.Tk()
+
+
 
 # Create grid for everything
 
@@ -77,7 +64,7 @@ update_degree.grid(row=0, column=2, sticky="e")
 def entry_cm(event):
     global cm  # Set it to actually interact with our created "cm" variable
     cm = cm_entry.get()
-    if not str(cm).isnumeric():
+    if not cm.isnumeric():
         cm = 20
         cm_entry.delete(0, tk.END)
         cm_entry.insert(0, cm)
@@ -96,7 +83,7 @@ def entry_cm(event):
 def entry_degree(event):
     global degree  # Set it to actually interact with our created "degree" variable
     degree = degree_entry.get()
-    if not str(degree).isnumeric():
+    if not degree.isnumeric():
         degree = 90
         degree_entry.delete(0, tk.END)
         degree_entry.insert(0, degree)
@@ -148,8 +135,9 @@ cut_engine.grid(row=5, column=0, sticky="nsew", padx=2, pady=2)
 
 # Define event handling for each button when clicked (Temporary Print to console for testing)
 def button_takeoff(event):
+   
     print("Take Off initiated")
-    tel.takeoff()
+    t.takeoff()
 
 
 takeoff.bind("<Button-1>", button_takeoff)
@@ -168,6 +156,7 @@ def button_cut_engine(event):
     t.emergency()
 
 
+
 cut_engine.bind("<Button-1>", button_cut_engine)
 
 """Start of Directional"""
@@ -175,8 +164,7 @@ cut_engine.bind("<Button-1>", button_cut_engine)
 # Create rotational buttons
 
 button_rotate_cw = tk.Button(
-    text="CW",
-    #⟳
+    text="⟳",
     width=3,
     height=2
 )
@@ -191,8 +179,7 @@ def rotate_cw(event):
 button_rotate_cw.bind("<Button-1>", rotate_cw)
 
 button_rotate_ccw = tk.Button(
-    text="CCW",
-    #⟲
+    text="⟲",
     width=3,
     height=2
 )
@@ -208,8 +195,7 @@ button_rotate_ccw.bind("<Button-1>", rotate_ccw)
 
 # Create directional buttons
 button_forward = tk.Button(
-    text="F",
-    #⮉
+    text="⮉",
     width=3,
     height=2,
 )
@@ -218,14 +204,13 @@ button_forward.grid(row=4, column=3, sticky="nesw", padx=2, pady=2)
 
 def forward(event):
     print("move forward {}cm".format(cm))
-    tel.fly_forward(cm)
+    t.fly_forward(cm)
 
 
 button_forward.bind("<Button-1>", forward)
 
 button_back = tk.Button(
-    text="B",
-    #⮋
+    text="⮋",
     width=3,
     height=2,
 )
@@ -234,14 +219,13 @@ button_back.grid(row=5, column=3, sticky="nesw", padx=2, pady=2)
 
 def back(event):
     print("move backward {}cm".format(cm))
-    tel.fly_backward(cm)
+    t.fly_backward(cm)
 
 
 button_back.bind("<Button-1>", back)
 
 button_up = tk.Button(
-    text="U",
-    #🢁
+    text="🢁",
     width=3,
     height=2,
 )
@@ -250,14 +234,13 @@ button_up.grid(row=3, column=3, sticky="nesw", padx=2, pady=2)
 
 def up(event):
     print("move up {}cm".format(cm))
-    tel.fly_up(cm)
+    t.fly_up(cm)
 
 
 button_up.bind("<Button-1>", up)
 
 button_left = tk.Button(
-    text="L",
-    #🢀
+    text="🢀",
     width=3,
     height=2,
 )
@@ -266,14 +249,13 @@ button_left.grid(row=4, column=2, sticky="nesw", padx=2, pady=2)
 
 def left(event):
     print("move left {}cm".format(cm))
-    tel.fly_left(cm)
+    t.fly_left(cm)
 
 
 button_left.bind("<Button-1>", left)
 
 button_right = tk.Button(
-    text="R",
-    #🢂
+    text="🢂",
     width=3,
     height=2,
 )
@@ -282,14 +264,13 @@ button_right.grid(row=4, column=4, sticky="nesw", padx=2, pady=2)
 
 def right(event):
     print("move right {}cm".format(cm))
-    tel.fly_right(cm)
+    t.fly_right(cm)
 
 
 button_right.bind("<Button-1>", right)
 
 button_down = tk.Button(
-    text="D",
-    #🢃,
+    text="🢃",
     width=3,
     height=2,
 )
@@ -298,12 +279,11 @@ button_down.grid(row=6, column=3, sticky="nesw", padx=2, pady=2)
 
 def down(event):
     print("move down {}cm".format(cm))
-    tel.fly_down(cm)
+    t.fly_down(cm)
 
 
 button_down.bind("<Button-1>", down)
 
 # Running a loop of our window which will continuously look for inputs to execute until window is exited
-t.connect_and_initialize()
+
 window.mainloop()
-t.disconnect()
