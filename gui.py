@@ -19,6 +19,17 @@ t = ta.Tello()
 window = tk.Tk()
 
 
+# Functions
+'''
+DEFAULT_TELLO_COMMAND_IP - A constant representing the default IP address for commands on Tello per the documentation.
+'''
+DEFAULT_TELLO_COMMAND_IP = "192.168.10.1"
+
+'''
+DEFAULT_TELLO_COMMAND_PORT - A constant representing the default port for commands on Tello per the documentation.
+'''
+DEFAULT_TELLO_COMMAND_PORT = 8889
+
 
 # Create grid for everything
 
@@ -286,4 +297,8 @@ button_down.bind("<Button-1>", down)
 
 # Running a loop of our window which will continuously look for inputs to execute until window is exited
 
+
+print("Program starts here")
+t.connect_and_initialize()
 window.mainloop()
+t.disconnect()
