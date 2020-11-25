@@ -139,7 +139,7 @@ cut_engine = tk.Button(
     width=10,
     height=2,
     bg="red",
-    fg="white"
+    fg="black"
 )
 cut_engine.grid(row=5, column=0, sticky="nsew", padx=2, pady=2)
 
@@ -184,7 +184,7 @@ button_rotate_cw.grid(row=3, column=4, sticky="nesw", padx=2, pady=2)
 
 def rotate_cw(event):
     print("Rotate clockwise {} degrees".format(degree))
-    tel.rotate_clockwise(degree)
+    t.rotate_clockwise(degree)
 
 
 button_rotate_cw.bind("<Button-1>", rotate_cw)
@@ -199,14 +199,14 @@ button_rotate_ccw.grid(row=3, column=2, sticky="nesw", padx=2, pady=2)
 
 def rotate_ccw(event):
     print("Rotate counter-clockwise {} degrees".format(degree))
-    tel.rotate_counterclockwise(degree)
+    t.rotate_counterclockwise(degree)
 
 
 button_rotate_ccw.bind("<Button-1>", rotate_ccw)
 
 # Create directional buttons
 button_forward = tk.Button(
-    text="⮉",
+    text="⬆",
     width=3,
     height=2,
 )
@@ -221,9 +221,9 @@ def forward(event):
 button_forward.bind("<Button-1>", forward)
 
 button_back = tk.Button(
-    text="⮋",
+    text="⬇",
     width=3,
-    height=2,
+    height=2
 )
 button_back.grid(row=5, column=3, sticky="nesw", padx=2, pady=2)
 
@@ -236,7 +236,7 @@ def back(event):
 button_back.bind("<Button-1>", back)
 
 button_up = tk.Button(
-    text="🢁",
+    text="↑",
     width=3,
     height=2,
 )
@@ -251,7 +251,7 @@ def up(event):
 button_up.bind("<Button-1>", up)
 
 button_left = tk.Button(
-    text="🢀",
+    text="←",
     width=3,
     height=2,
 )
@@ -266,7 +266,7 @@ def left(event):
 button_left.bind("<Button-1>", left)
 
 button_right = tk.Button(
-    text="🢂",
+    text="→",
     width=3,
     height=2,
 )
@@ -281,9 +281,9 @@ def right(event):
 button_right.bind("<Button-1>", right)
 
 button_down = tk.Button(
-    text="🢃",
+    text="↓",
     width=3,
-    height=2,
+    height=2
 )
 button_down.grid(row=6, column=3, sticky="nesw", padx=2, pady=2)
 
@@ -294,6 +294,36 @@ def down(event):
 
 
 button_down.bind("<Button-1>", down)
+
+button_flip_right = tk.Button(
+    text="Flip R",
+    width=3,
+    height=2
+)
+button_flip_right.grid(row=5, column=4, sticky="nesw", padx=2, pady=2)
+
+
+def flip_right(event):
+    print("Flip Right")
+    t.flip("r")
+
+
+button_flip_right.bind("<Button-1>", flip_right)
+
+button_flip_left = tk.Button(
+    text="Flip L",
+    width=3,
+    height=2
+)
+button_flip_left.grid(row=5, column=2, sticky="nesw", padx=2, pady=2)
+
+
+def flip_left(event):
+    print("Flip Left")
+    t.flip("l")
+
+
+button_flip_left.bind("<Button-1>", flip_left)
 
 # Running a loop of our window which will continuously look for inputs to execute until window is exited
 
